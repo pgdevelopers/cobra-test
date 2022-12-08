@@ -8,7 +8,7 @@ import (
 )
 
 func TestAbc(t *testing.T) {
-	cmd := abcCmd
+	cmd := NewABCCMD()
 	b := bytes.NewBufferString("")
 	cmd.SetOut(b)
 	cmd.Execute()
@@ -23,8 +23,9 @@ func TestAbc(t *testing.T) {
 	}
 }
 
-func TestVersionCmd(t *testing.T) {
-	cmd := versionCmd("version test")
+func TestVersion(t *testing.T) {
+	expected := "v.john.nate"
+	cmd := NewVersionCMD(expected)
 	b := bytes.NewBufferString("")
 	cmd.SetOut(b)
 	cmd.Execute()
@@ -34,7 +35,7 @@ func TestVersionCmd(t *testing.T) {
 	}
 	output := string(out)
 	fmt.Println(output)
-	if string(out) != "version test" {
-		t.Fatalf("expected \"%s\" got \"%s\"", "version test", output)
+	if output != expected {
+		t.Fatalf("expected \"%s\" got \"%s\"", expected, output)
 	}
 }
