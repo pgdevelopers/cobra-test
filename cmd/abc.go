@@ -7,17 +7,19 @@ import (
 )
 
 func init() {
-	rootCmd.AddCommand(versionCmd("1.0"))
+	rootCmd.AddCommand(abcCmd)
 }
 
-func versionCmd(message string) *cobra.Command {
+var abcCmd = NewABCCMD()
+
+func NewABCCMD() *cobra.Command {
 	return &cobra.Command{
-		Use:   "version",
-		Short: "Print the version number of Hugo",
+		Use:   "abc",
+		Short: "abc123",
 		Long:  `All software has versions. This is Hugo's`,
 		Run: func(cmd *cobra.Command, args []string) {
 			// fmt.Println("Hugo Static Site Generator v0.9 -- HEAD")
-			fmt.Fprintf(cmd.OutOrStdout(), message)
+			fmt.Fprintf(cmd.OutOrStdout(), "abc test")
 		},
 	}
 }

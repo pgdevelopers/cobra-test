@@ -7,8 +7,8 @@ import (
 	"testing"
 )
 
-func TestVersionCmd(t *testing.T) {
-	cmd := versionCmd("version test")
+func TestAbc(t *testing.T) {
+	cmd := NewABCCMD()
 	b := bytes.NewBufferString("")
 	cmd.SetOut(b)
 	cmd.Execute()
@@ -18,7 +18,7 @@ func TestVersionCmd(t *testing.T) {
 	}
 	output := string(out)
 	fmt.Println(output)
-	if string(out) != "version test" {
-		t.Fatalf("expected \"%s\" got \"%s\"", "version test", output)
+	if output != "abc test" {
+		t.Fatalf("expected \"%s\" got \"%s\"", "abc test", output)
 	}
 }
